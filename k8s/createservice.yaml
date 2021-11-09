@@ -1,0 +1,37 @@
+---
+apiVersion: services.cloud.sap.com/v1alpha1
+kind: ServiceInstance
+metadata:
+  name: destination-instance-fiori
+spec:
+  serviceOfferingName: destination
+  servicePlanName: lite
+---
+apiVersion: services.cloud.sap.com/v1alpha1
+kind: ServiceBinding
+metadata:
+  name: destination-binding-fiori
+spec:
+    serviceInstanceName: destination-instance-fiori
+---
+apiVersion: services.cloud.sap.com/v1alpha1
+kind: ServiceInstance
+metadata:
+  name: xsuaa-instance-fiori
+spec:
+  serviceOfferingName: xsuaa
+  servicePlanName: application
+  parameters:
+    xsappname: xsapp-fiori
+    tenant-mode: dedicated
+    oauth2-configuration:
+      redirect-uris:
+      - https://*/**
+      - http://*/**
+---
+apiVersion: services.cloud.sap.com/v1alpha1
+kind: ServiceBinding
+metadata:
+  name: xsuaa-binding-fiori
+spec:
+    serviceInstanceName: xsuaa-instance-fiori

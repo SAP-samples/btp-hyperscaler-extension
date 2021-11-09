@@ -1,0 +1,90 @@
+<mvc:View
+	controllerName="ns.basicfioriapp.controller.Detail"
+	xmlns="sap.m"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<semantic:SemanticPage
+		id="detailPage"
+		busy="{detailView>/busy}"
+		busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title
+				text="{CompanyName}"
+				level="H2"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<ObjectAttribute text="Business Partner ID: {BusinessPartnerID}" id="objid"/>
+			<ObjectAttribute text="{Address/Building}, {Address/Street}, {Address/City}, {Address/Country}, {Address/PostalCode}" id="attribute41" title="Address"/>
+			<ObjectStatus xmlns="sap.m" state="Warning" id="status112" text="{WebAddress}" title="Company Web Address"/>
+		</semantic:headerContent>
+		<semantic:content>
+			<Table
+				id="lineItemsList"
+				width="auto"
+				items="{ToContacts}"
+				updateFinished=".onListUpdateFinished"
+				noDataText="{i18n>detailLineItemTableNoDataText}"
+				busyIndicatorDelay="{detailView>/lineItemTableDelay}">
+				<headerToolbar>
+					<Toolbar>
+						<Title
+							id="lineItemsTitle"
+							text="{detailView>/lineItemListTitle}"
+							titleStyle="H3"
+							level="H3"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>detailLineItemTableIDColumn}"/>
+					</Column>
+					<Column
+						minScreenWidth="Tablet"
+						demandPopin="true"
+						hAlign="End">
+						<Text text="{i18n>detailLineItemTableUnitNumberColumn}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier
+								title="{FirstName}"
+								text="{LastName}"/>
+							<ObjectNumber
+								unit="{EmailAddress}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+		<!--Semantic ShareMenu Buttons-->
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction
+				id="shareEmail"
+				press=".onSendEmailPress"/>
+		</semantic:sendEmailAction>
+
+		<semantic:closeAction>
+			<semantic:CloseAction
+					id="closeColumn"
+					press=".onCloseDetailPress"/>
+		</semantic:closeAction>
+
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction
+					id="enterFullScreen"
+					visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+					press=".toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction
+					id="exitFullScreen"
+					visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+					press=".toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+
+	</semantic:SemanticPage>
+
+</mvc:View>

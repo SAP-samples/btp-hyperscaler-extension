@@ -1,0 +1,42 @@
+<mvc:View xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc" controllerName="ns.basicfioriapp.controller.Master">
+
+	<semantic:SemanticPage id="masterPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
+		<semantic:titleHeading>
+			<Title id="masterPageTitle" text="Business Partner Details" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+			<List id="list" width="auto" class="sapFDynamicPageAlignContent" items="{      path: '/BusinessPartnerSet',      sorter: {       path: 'CompanyName',       descending: false      },      groupHeaderFactory: '.createGroupHeader'     }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange">
+            				<infoToolbar>
+					<Toolbar design="Info">
+						<Title id="filterBarLabel" text="Business Partners" level="H3"/>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar>
+					<OverflowToolbar>
+						<SearchField id="searchField" showRefreshButton="true" tooltip="{i18n>masterSearchTooltip}" search=".onSearch" width="auto">
+							<layoutData>
+								<OverflowToolbarLayoutData minWidth="150px" maxWidth="240px" shrinkable="true" priority="NeverOverflow"/>
+							</layoutData>
+						</SearchField>
+						<ToolbarSpacer/>
+						<Button id="sortButton" press=".onOpenViewSettings" icon="sap-icon://sort" type="Transparent"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem type="Navigation" press=".onSelectionChange" title="Company: {CompanyName}" number="BP Role: {BusinessPartnerRole}" intro="Business Partner ID: {BusinessPartnerID}">
+					<attributes>
+					    <ObjectAttribute text="{Address/Building},&#10;{Address/Street},&#10;{Address/City},&#10;{Address/Country},&#10;{Address/PostalCode}" id="attribute4" title="Address"/>
+					</attributes>
+					<firstStatus>
+					    <ObjectStatus xmlns="sap.m" state="Success" id="status8" title="Web Address" text="{WebAddress}"/>
+					</firstStatus>
+					<secondStatus>
+					    <ObjectStatus xmlns="sap.m" state="Warning" id="status11" text="{EmailAddress}" title="Company Email"/>
+					</secondStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>
