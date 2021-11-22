@@ -17,7 +17,7 @@ In this tutorial, we use the simple fioriapp(Master Detail) application to learn
 Build an application on hyperscaler using SAP BTP services.
 As an employee of  Business Partner Validation Firm <XYZ>, which is a third party vendor of <ABC> Corporation, John would like to know the recently added business partner in SAP Backend system to review. 
  - Application Build on Hyperscaler
-      As an Employee of <XYZ> Corporation, sees Newly added business partner in application
+      as an Employee of <XYZ> Corporation, sees Newly added business partner in application
 
 ## Architecture
 
@@ -35,6 +35,7 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
 - Service Management Control (SMCTL) command line interface. See [Using the SMCTL](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0107f3f8c1954a4e96802f556fc807e3.html).
 - [Kubernetes cluster](https://kubernetes.io/) running version 1.17 or higher 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) v1.17 or higher
+- Set KUBECONFIG environment variable [kubectl env](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/dd5faaa2c3f14cbf9d32a9886624845b.html)
 - [helm](https://helm.sh/) v3.0 or higher
 - Follow the steps to setup the [Consuming SAP BTP Services in Kubernetes with SAP BTP Service Operator](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/b5a35bfa87b5444080e6e6e6d361fa20.html)
 - You have an [account on the SAP Gateway Demo System (ES5)](https://developers.sap.com/tutorials/gateway-demo-signup.html) created
