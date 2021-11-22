@@ -17,7 +17,6 @@ In this tutorial, we use the simple fioriapp(Master Detail) application to learn
 Build an application on hyperscaler using SAP BTP services.
 As an employee of  Business Partner Validation Firm <XYZ>, which is a third party vendor of <ABC> Corporation, John would like to know the recently added business partner in SAP Backend system to review. 
  - Application Build on Hyperscaler
-  
       As an Employee of <XYZ> Corporation, sees Newly added business partner in application
 
 ## Architecture
