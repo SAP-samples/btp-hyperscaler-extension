@@ -21,7 +21,7 @@ As an employee of  Business Partner Validation Firm <XYZ>, which is a third part
 
 ## Architecture
 
-![solution diagram](./k8s/images/hyperscalar.png)
+![solution diagram](./k8s/images/hyperscaler.png)
 
 # SAP Business Technology Platform (SAP BTP) Service Operator for Kubernetes
 
