@@ -1,7 +1,7 @@
 # Consuming SAP BTP Services From Any Hyperscaler
 
 ## Description:
-Deploy an SAP Fiori Application in any hyperscaler, such as Google Cloud Platform (GCP), Amazon Web Services (AWS), Alibaba Cloud or Azure and use services from SAP BTP.
+Deploy an SAP Fiori Application in any a hyperscaler, such as Google Cloud Platform (GCP), Amazon Web Services (AWS), Alibaba Cloud or Azure and use services from SAP BTP.
 
 This application showcases:
  - How to consume Services running on SAP BTP from other environments e.g K8S clusters managed by hyperscalers
@@ -14,15 +14,13 @@ Business Scenario to showcase how to deploy and simple fiori Master detail appli
 
 In this tutorial, we use the simple fioriapp(Master Detail) application to learn some best practices when setting up your Kubernetes cluster to communicate with SAP BTP so you can use the Destination and the SAP Authorization & Trust Management services.
 
-Build an application on hyperscaler (Non SAP Data Center) using SAP BTP services.
+Build an application on hyperscaler using SAP BTP services.
 As an employee of  Business Partner Validation Firm <XYZ>, which is a third party vendor of <ABC> Corporation, John would like to know the recently added business partner in SAP Backend system to review. 
- - Application Build on Hyperscaler (Non SAP Data center)
+ - Application Build on Hyperscaler
   
       As an Employee of <XYZ> Corporation, sees Newly added business partner in application
 
 ## Architecture
-
-### Solution Diagram
 
 ![solution diagram](./k8s/images/hyperscalar.png)
 
@@ -50,21 +48,19 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
 
 ## Login to SAP Service Manager to Verify Cross consumable services from SAP Business Technology Platform (SAP BTP)
 
-1. Execute the following command from your Service Manager Control (SMCTL) command-line interface:
-
-    `smctl login -a https://service-manager.cfapps.<region domain> --param subdomain=<subdomain>`
-    
-     To find the region domain for the SAP Service Manager, see [Regions and API Endpoints Available for the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html#loiof344a57233d34199b2123b9620d0bb41)
-
-     The subdomain is the subaccount subdomain, in which you would like to register the broker. You can find it in the cloud cockpit Overview tab of your     subaccount.
-     
-2. Input your user, with an assigned Subaccount Service Administrator Role Collection, and your password.
+1. Assign Subaccount Service Administrator Role Collection to your user/
+ 
+   Assign the Subaccount Service Administrator Collection, see the step 2 of the Setup section of [The procedure shows how to assign new service administrator
+   role collections to a user of your choice](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0735965d10b342a393b5a83924dba9b4.html).*
+  
+2.  Execute the following command from your Service Manager Control (SMCTL) command-line interface:
 
     `smctl login -a https://service-manager.cfapps.<region domain> --param subdomain=<subdomain name> -u <user.email> -p <password>`
-    
-    *Note:<br>
-     Assign the Subaccount Service Administrator Collection, see the step 2 of the Setup section of [The procedure shows how to assign new service administrator
-     role collections to a user of your choice](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0735965d10b342a393b5a83924dba9b4.html).*
+ 
+    To find the region domain for the SAP Service Manager, see Regions and API Endpoints Available for the Cloud Foundry Environment
+    The subdomain is the subaccount subdomain, in which you would like to register the broker. You can find it in the cloud cockpit Overview tab of your subaccount.
+ 
+    To find the region domain for the SAP Service Manager, see [Regions and API Endpoints Available for the Cloud Foundry Environment](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html#loiof344a57233d34199b2123b9620d0bb41)
 
 
 3. Check the cross consumable services by entering the following command:
@@ -73,7 +69,8 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
     
      ![crossconsumableservices](./k8s/images/crossconsumption.png)
 
-
+    >Note: Above image is subject to the entitlements assigned to your subaccount.
+ 
 ## Create a service instance and service binding
  
 1.  In the **fioriapp** application, you use the Destination and the SAP Authorization & Trust Management services and consume them using the SAP BTP service
