@@ -31,11 +31,14 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
 
 
 ## Prerequisites
+- [Install Docker](https://docs.docker.com/get-docker/) (or any other Container tool).
+- Create an account at (https://hub.docker.com/) (or any other Container Image Library).
 - SAP BTP [Global Account](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/d61c2819034b48e68145c45c36acba6e.html) and [Subaccount](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/55d0b6d8b96846b8ae93b85194df0944.html) 
 - Service Management Control (SMCTL) command line interface. See [Using the SMCTL](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0107f3f8c1954a4e96802f556fc807e3.html).
 - [Kubernetes cluster](https://kubernetes.io/) running version 1.17 or higher 
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) v1.17 or higher
-- Set KUBECONFIG environment variable [kubectl env](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/dd5faaa2c3f14cbf9d32a9886624845b.html)
+- Install [kubectl](https://developers.sap.com/tutorials/cp-kyma-download-cli.html) v1.17 or higher
+- Test the [Kubetcl](https://developers.sap.com/tutorials/cp-kyma-download-cli.html#4709f3b9-b9bc-45f1-89c1-cd6f097c55f5)
+- Set KUBECONFIG environment variable [kubectl env](https://developers.sap.com/tutorials/cp-kyma-download-cli.html#98b12f88-3976-4a8c-b1de-41bcad84b5b1)
 - [helm](https://helm.sh/) v3.0 or higher
 - Follow the steps to setup the [Consuming SAP BTP Services in Kubernetes with SAP BTP Service Operator](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/b5a35bfa87b5444080e6e6e6d361fa20.html)
 - You have an [account on the SAP Gateway Demo System (ES5)](https://developers.sap.com/tutorials/gateway-demo-signup.html) created
@@ -106,17 +109,35 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
     To know more see [SAP BTP Service Operator](https://github.com/SAP/sap-btp-service-operator)
  
  
- ## Deploy the application into Kubernetes Cluster
+ ## Build and Deploy the application into Kubernetes Cluster
  
- 1. To deploy the **fioriapp** application in your cluster, you have to create a pod, which encapsulates the container and ensures that a specified quorum of running instances is fulfilled. To do that, use the `deployment.yaml`.
+ 1. Build the docker image of the fioriapp.
  
- 2. Apply the resource file in your cluster to deploy the application.
+    *cd btp-hyperscaler-extension/basicfioriapp
+ 
+    *docker build . -t <docker-username>/fioriapp -f Dockerfile
+ 
+    >Note: Replace <docker-username> with your username
+ 
+ 2. Push the docker image of the fioriapp to your Container Image Library.
+
+    *docker push <docker-username>/fioriapp
+ 
+    >Note: Replace <docker-username> with your username
+
+ 3. Update the docker image in the ./btp-hyperscaler-extension/k8s/deployment.yaml file. Line no 21
+    
+    *Replace <docker-username> with your username
+ 
+ 4. To deploy the **fioriapp** application in your cluster, you have to create a pod, which encapsulates the container and ensures that a specified quorum of running instances is fulfilled. To do that, use the `deployment.yaml`.
+ 
+ 5. Apply the resource file in your cluster to deploy the application.
 
     ```bash
     kubectl apply -f https://github.com/SAP-samples/FioriApp-Hyperscaler/blob/master/k8s/deployment.yaml -n sapfiori
     ```
  
-3. Check that the status of the deployed application in your cluster is **Running**.
+ 6. Check that the status of the deployed application in your cluster is **Running**.
 
     ```Shell/Bash
     kubectl get pods -n sapfiori
