@@ -37,7 +37,7 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
 - Service Management Control (SMCTL) command line interface. See [Using the SMCTL](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0107f3f8c1954a4e96802f556fc807e3.html).
 - [Kubernetes cluster](https://kubernetes.io/) running version 1.17 or higher 
 - Install [kubectl](https://developers.sap.com/tutorials/cp-kyma-download-cli.html) v1.17 or higher
-- Test the [Kubetcl](https://developers.sap.com/tutorials/cp-kyma-download-cli.html#4709f3b9-b9bc-45f1-89c1-cd6f097c55f5)
+- Test the [Kubetcl](https://developers.sap.com/tutorials/cp-kyma-download-cli.html#4709f3b9-b9bc-45f1-89c1-cd6f097c55f5) setup
 - Set KUBECONFIG environment variable [kubectl env](https://developers.sap.com/tutorials/cp-kyma-download-cli.html#98b12f88-3976-4a8c-b1de-41bcad84b5b1)
 - [helm](https://helm.sh/) v3.0 or higher
 - Follow the steps to setup the [Consuming SAP BTP Services in Kubernetes with SAP BTP Service Operator](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/b5a35bfa87b5444080e6e6e6d361fa20.html)
@@ -51,10 +51,10 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
 
 ## Login to SAP Service Manager to Verify Cross consumable services from SAP Business Technology Platform (SAP BTP)
 
-1. Assign Subaccount Service Administrator Role Collection to your user/
+1. Assign Subaccount Service Administrator Role Collection to your user
  
    Assign the Subaccount Service Administrator Collection, see the step 2 of the Setup section of [The procedure shows how to assign new service administrator
-   role collections to a user of your choice](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0735965d10b342a393b5a83924dba9b4.html).*
+   role collections to a user of your choice](https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0735965d10b342a393b5a83924dba9b4.html)
   
 2.  Execute the following command from your Service Manager Control (SMCTL) command-line interface:
 
@@ -113,21 +113,22 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
  
  1. Build the docker image of the fioriapp.
  
-    *cd btp-hyperscaler-extension/basicfioriapp
+    * cd btp-hyperscaler-extension/basicfioriapp
  
-    *docker build . -t <docker-username>/fioriapp -f Dockerfile
+    * docker build . -t `<docker-username>`/fioriapp -f Dockerfile
  
-    >Note: Replace <docker-username> with your username
+    >Note: Replace `<docker-username>` with your username
  
  2. Push the docker image of the fioriapp to your Container Image Library.
 
-    *docker push <docker-username>/fioriapp
- 
-    >Note: Replace <docker-username> with your username
+    * docker push `<docker-username>`/fioriapp
 
- 3. Update the docker image in the ./btp-hyperscaler-extension/k8s/deployment.yaml file. Line no 21
+ 
+     >Note: Replace `<docker-username>` with your username
+
+ 3. Update the docker image in the `./btp-hyperscaler-extension/k8s/deployment.yaml` file. Line no 21
     
-    *Replace <docker-username> with your username
+    * Replace `<docker-username>` with your username
  
  4. To deploy the **fioriapp** application in your cluster, you have to create a pod, which encapsulates the container and ensures that a specified quorum of running instances is fulfilled. To do that, use the `deployment.yaml`.
  
