@@ -149,7 +149,7 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
     
     ```
 
-## Expose the deployed application using load balancer
+## Run the deployed application using load balancer
 
 1. Kubernetes provides a convenient way to expose applications. With **--type=LoadBalancer** you request to provision a public IP address. It will also automatically assign a cluster-IP and a Node Port in the current setup of the cluster.
 
