@@ -18,7 +18,7 @@ spec:
         app: fioriapp
     spec:
       containers:
-      - image: <username>/fioriapp:latest
+      - image: <docker-username>/fioriapp:latest
         name: fioriapp
         ports:
         - containerPort: 5000
