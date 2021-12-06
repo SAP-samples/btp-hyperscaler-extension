@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-hyperscaler-extension)](https://api.reuse.software/info/github.com/SAP-samples/btp-hyperscaler-extension)
+
 # Consuming SAP BTP Services From Any Hyperscaler
 
 ## Description:
@@ -168,15 +170,11 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
     
     ![finalimage](./k8s/images/businesspartner.png)
 
-## Known Issues
-
 ## How to obtain support
 
 [Create an issue](https://github.com/SAP-samples/btp-hyperscaler-extension/issues) in this repository if you find a bug or have questions about the content.
  
 For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
-
-## Contributing
 
 ## License
 Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
