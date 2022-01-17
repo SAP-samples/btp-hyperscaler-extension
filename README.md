@@ -82,7 +82,17 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
     operator. To use these SAP BTP services you have to create the respective service instances and service bindings. Use the `createservice.yaml` which will
     create the *destination* service instance with plan *lite* and the *xsuaa* service instance with plan *application*.
 
-2. Create your own namespace.
+2.  The hyperscaler applications can be found in the [btp-hyperscaler-extension]
+   (https://github.com/SAP-samples/btp-hyperscaler-extension) repository. Within the repo you can find each of their Deployment files within the respective folder.
+
+3. Download the code by choosing the green **Code** button and then choosing one of the options to download the code locally.
+
+    You can instead run the following command within your CLI at your desired folder location:
+
+    ```Shell/Bash
+    git clone https://github.com/SAP-samples/btp-hyperscaler-extension
+
+4. Create your own namespace.
 
     ```bash
     
@@ -90,10 +100,10 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
     
     ```
 
-3.  Apply the resource file in your cluster to create the instance.
+5.  Apply the resource file in your cluster to create the instance.
 
     ```bash
-    kubectl apply -f https://github.com/SAP-samples/FioriApp-Hyperscaler/blob/master/k8s/createservice.yaml -n sapfiori
+    kubectl apply -f https://raw.githubusercontent.com/SAP-samples/btp-hyperscaler-extension/master/k8s/createservice.yaml -n sapfiori
     ```
 
 4.  Check that the status of the service in your cluster is **Created**.
@@ -108,7 +118,7 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
     
     ```
     
-    To know more see [SAP BTP Service Operator](https://github.com/SAP/sap-btp-service-operator)
+    To know more see [SAP BTP Service Operator](https://github.com/SAP-samples/btp-hyperscaler-extension)
  
  
  ## Build and Deploy the application into Kubernetes Cluster
@@ -137,7 +147,7 @@ The SAP BTP service operator is based on the [Kubernetes Operator pattern](https
  5. Apply the resource file in your cluster to deploy the application.
 
     ```bash
-    kubectl apply -f https://github.com/SAP-samples/FioriApp-Hyperscaler/blob/master/k8s/deployment.yaml -n sapfiori
+    kubectl apply -f https://raw.githubusercontent.com/SAP-samples/btp-hyperscaler-extension/master/k8s/deployment.yaml -n sapfiori
     ```
  
  6. Check that the status of the deployed application in your cluster is **Running**.
