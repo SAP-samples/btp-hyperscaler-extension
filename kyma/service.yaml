@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fioriapp
+  labels:
+    app: fioriapp
+spec:
+  ports:
+    - port: 5000
+      name: http
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    app: fioriapp
+
+---
+apiVersion: gateway.kyma-project.io/v1alpha1
+kind: APIRule
+metadata:
+  name: fioriapp
+spec:
+  gateway: kyma-gateway.kyma-system.svc.cluster.local
+  rules:
+    - path: /.*
+      methods: ["GET","POST","PUT","DELETE","HEAD"]
+      accessStrategies:
+        - handler: noop
+      mutators:
+        - handler: header
+          config:
+            headers:
+              x-forwarded-host: "fioriapp.<cluster-domain>"
+  service:
+    host: fioriapp
+    name: fioriapp
+    port: 5000

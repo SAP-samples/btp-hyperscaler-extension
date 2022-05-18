@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: fioriapp
+  name: fioriapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fioriapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: fioriapp
+    spec:
+      containers:
+      - image: <docker-username>/fioriapp:latest
+        name: fioriapp
+        ports:
+        - containerPort: 5000
+        resources: {}
+        volumeMounts:
+        - name: uaa-instance-volume
+          mountPath: "/etc/secrets/sapcp/xsuaa/xsuaa-instance-kyma"
+          readOnly: true
+        - name: destination-instance-volume
+          mountPath: "/etc/secrets/sapcp/destination/destination-instance-kyma"
+          readOnly: true
+      volumes:
+         - name: uaa-instance-volume
+           secret:
+            secretName: xsuaa-binding-kyma
+         - name: destination-instance-volume
+           secret:
+            secretName: destination-binding-kyma
+status: {}
