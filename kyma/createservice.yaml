@@ -1,41 +1,37 @@
 ---
-apiVersion: servicecatalog.k8s.io/v1beta1
+apiVersion: services.cloud.sap.com/v1alpha1
 kind: ServiceInstance
 metadata:
-  name: destination-instance-kyma
+  name: destination-instance-fiori
 spec:
-  clusterServiceClassExternalName: destination
-  clusterServicePlanExternalName: lite
+  serviceOfferingName: destination
+  servicePlanName: lite
 ---
-apiVersion: servicecatalog.k8s.io/v1beta1
+apiVersion: services.cloud.sap.com/v1alpha1
 kind: ServiceBinding
 metadata:
-  name: destination-binding-kyma
+  name: destination-binding-fiori
 spec:
-  instanceRef:
-    name: destination-instance-kyma
-
+    serviceInstanceName: destination-instance-fiori
 ---
-apiVersion: servicecatalog.k8s.io/v1beta1
+apiVersion: services.cloud.sap.com/v1alpha1
 kind: ServiceInstance
 metadata:
-  name: xsuaa-instance-kyma
+  name: xsuaa-instance-fiori
 spec:
-  clusterServiceClassExternalName: xsuaa
-  clusterServicePlanExternalName: application
+  serviceOfferingName: xsuaa
+  servicePlanName: application
   parameters:
-    xsappname: xsapp-kyma
+    xsappname: xsapp-fiori
     tenant-mode: dedicated
     oauth2-configuration:
       redirect-uris:
         # callback
         - "https://fioriapp.<cluster-domain>/**"
-
 ---
-apiVersion: servicecatalog.k8s.io/v1beta1
+apiVersion: services.cloud.sap.com/v1alpha1
 kind: ServiceBinding
 metadata:
-  name: xsuaa-binding-kyma
+  name: xsuaa-binding-fiori
 spec:
-  instanceRef:
-    name: xsuaa-instance-kyma
+    serviceInstanceName: xsuaa-instance-fiori
