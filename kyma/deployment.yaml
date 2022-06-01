@@ -25,16 +25,16 @@ spec:
         resources: {}
         volumeMounts:
         - name: uaa-instance-volume
-          mountPath: "/etc/secrets/sapcp/xsuaa/xsuaa-instance-kyma"
+          mountPath: "/etc/secrets/sapcp/xsuaa/xsuaa-instance-fiori"
           readOnly: true
         - name: destination-instance-volume
-          mountPath: "/etc/secrets/sapcp/destination/destination-instance-kyma"
+          mountPath: "/etc/secrets/sapcp/destination/destination-instance-fiori"
           readOnly: true
       volumes:
          - name: uaa-instance-volume
            secret:
-            secretName: xsuaa-binding-kyma
+            secretName: xsuaa-binding-fiori
          - name: destination-instance-volume
            secret:
-            secretName: destination-binding-kyma
+            secretName: destination-binding-fiori
 status: {}
