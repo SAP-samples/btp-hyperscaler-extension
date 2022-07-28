@@ -1,5 +1,5 @@
 ---
-apiVersion: services.cloud.sap.com/v1alpha1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceInstance
 metadata:
   name: destination-instance-fiori
@@ -7,14 +7,14 @@ spec:
   serviceOfferingName: destination
   servicePlanName: lite
 ---
-apiVersion: services.cloud.sap.com/v1alpha1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceBinding
 metadata:
   name: destination-binding-fiori
 spec:
     serviceInstanceName: destination-instance-fiori
 ---
-apiVersion: services.cloud.sap.com/v1alpha1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceInstance
 metadata:
   name: xsuaa-instance-fiori
@@ -29,7 +29,7 @@ spec:
         # callback
         - "https://fioriapp.<cluster-domain>/**"
 ---
-apiVersion: services.cloud.sap.com/v1alpha1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceBinding
 metadata:
   name: xsuaa-binding-fiori
