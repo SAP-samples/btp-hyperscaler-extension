@@ -15,7 +15,7 @@ spec:
     app: fioriapp
 
 ---
-apiVersion: gateway.kyma-project.io/v1alpha1
+apiVersion: gateway.kyma-project.io/v1beta1
 kind: APIRule
 metadata:
   name: fioriapp
