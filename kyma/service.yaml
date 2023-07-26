@@ -21,7 +21,7 @@ metadata:
   name: fioriapp
 spec:
   gateway: kyma-system/kyma-gateway
-  host: fioriapp
+  host: fioriapp.<cluster-domain>
   rules:
     - path: /.*
       methods: ["GET","POST","PUT","DELETE","HEAD"]
